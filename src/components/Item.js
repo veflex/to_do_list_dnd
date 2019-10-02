@@ -1,18 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import { DragSource } from "react-dnd";
 
-const itemSource = {
-  beginDrag(props) {
-    console.log("yoyoyo");
-    return props.item;
-  },
-  endDrag(props, monitor, component) {
-    if (!monitor.didDrop()) {
-      return;
-    }
-    return props.handleDrop(props.item);
-  }
-};
+
 
 function collect(connect, monitor) {
   return {
@@ -32,4 +21,15 @@ const Item = props => {
   );
 };
 
+const itemSource = {
+  beginDrag (props, monitor) {
+    return props.item;
+  },
+  endDrag (props, monitor) {
+    if (!monitor.didDrop()) {
+      return;
+    }
+    return props.handleDrop(props.item);
+  }
+};
 export default DragSource("item", itemSource, collect)(Item);

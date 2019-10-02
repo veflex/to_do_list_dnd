@@ -1,6 +1,12 @@
 import React from "react";
 import { DropTarget } from "react-dnd";
 
+const itemSource = {
+  drop(props, monitor){
+    console.log('monitor drop:', monitor.getDropResult())
+  }
+};
+
 const collect = (connect, monitor) => {
   return {
     connectedDropTarget: connect.dropTarget(),
@@ -19,4 +25,4 @@ const Target = props => {
   );
 };
 
-export default DropTarget("item", {}, collect)(Target);
+export default DropTarget("item", itemSource, collect)(Target);

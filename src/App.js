@@ -26,10 +26,10 @@ function App() {
     });
     setListTo(prevState2 => {
       const newState = [...prevState2, item];
-      console.log(newState);
       return newState;
     });
   };
+
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="App">
